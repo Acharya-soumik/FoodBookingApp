@@ -20,9 +20,9 @@ function Resturant({ food }) {
                   />
                   <div className="card-body">
                     <h2 className="card-title">{ele.name}</h2>
-                    <button className="btn btn-info">
-                      <Link to={`/resturants/${ele.name}`}>View More</Link>
-                    </button>
+                    <Link to={`/resturants/${ele.name}`}>
+                      <button className="btn btn-info">View More</button>
+                    </Link>
                   </div>
                 </div>
               </div>

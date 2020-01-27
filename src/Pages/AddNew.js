@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addFood } from "../Redux/Action";
-const listItems = [];
+
+let listItems = [];
 function AddNew(props) {
   const [name, setName] = useState("");
   const [item, setItem] = useState("");
@@ -31,6 +32,7 @@ function AddNew(props) {
     setName("");
     setImg("");
     alert("data added succesfully");
+    listItems = [];
   };
 
   return (
@@ -58,6 +60,7 @@ function AddNew(props) {
             className="form-control"
             value={price}
             onChange={e => setPrice(e.target.value)}
+            type="number"
           />
           <button className="btn btn-danger" onClick={setFoodHandler}>
             Add Food Items

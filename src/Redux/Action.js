@@ -1,4 +1,10 @@
-import { LOGIN, SIGN_UP, ADD_FOOD, ADD_TO_CART } from "./ActionType";
+import {
+  LOGIN,
+  SIGN_UP,
+  ADD_FOOD,
+  ADD_TO_CART,
+  PLACE_ORDER
+} from "./ActionType";
 
 export const signUp = item => {
   return {
@@ -25,5 +31,11 @@ export const addToCart = item => {
   return {
     type: ADD_TO_CART,
     payload: item
+  };
+};
+
+export const placeOrder = () => {
+  return {
+    type: PLACE_ORDER
   };
 };

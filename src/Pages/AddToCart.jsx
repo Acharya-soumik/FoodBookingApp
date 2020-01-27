@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { addToCart } from "../Redux/Action";
 
 function AddToCart(props) {
-  // console.log(props);
+  console.log(props);
   let name = props.match.params.name;
   let food = props.yumms.find(ele => {
-    return ele.name == name;
+    return ele.name === name;
   });
   // console.log(props.yumms);
   console.log(food);

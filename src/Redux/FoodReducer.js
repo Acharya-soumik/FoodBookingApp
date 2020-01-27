@@ -1,8 +1,9 @@
-import { ADD_FOOD, ADD_TO_CART } from "../Redux/ActionType";
+import { ADD_FOOD, ADD_TO_CART, PLACE_ORDER } from "../Redux/ActionType";
 
 const initialState = {
   rest: [],
-  cart: []
+  cart: [],
+  orderHistory: []
 };
 
 const foodReducer = (state = initialState, action) => {
@@ -19,6 +20,13 @@ const foodReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: [...state.cart, action.payload]
+      };
+    }
+    case PLACE_ORDER: {
+      return {
+        ...state,
+        orderHistory: [...state.orderHistory, ...state.cart],
+        cart: []
       };
     }
 
