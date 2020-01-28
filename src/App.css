@@ -2,11 +2,21 @@
   height: 3rem;
   width: 3rem;
 }
+.anime-font {
+  font-family: "Roboto Slab", serif;
+}
 
 .bg-img {
-  background-image: url("https://www.mccain.com/media/2556/mccain-fries-and-appetizers.jpg");
-  background-size: cover;
+  background: radial-gradient(
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(4, 70, 66, 0.8) 0%,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(14, 52, 88, 0.8) 0%
+    ),
+    url("https://www.mccain.com/media/2556/mccain-fries-and-appetizers.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   min-height: 400px;
 }
 

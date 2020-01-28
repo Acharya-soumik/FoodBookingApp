@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { placeOrder } from "../Redux/Action";
+import { placeOrder, clearHistory } from "../Redux/Action";
 
 let sum = [];
 let amt = 0;
-function Cart({ food, placeOrder, foodHistory }) {
+function Cart({ food, placeOrder, foodHistory, clear, delItem }) {
   amt = 0;
   sum = food.map(ele => parseInt(ele.price));
   if (sum.length > 0) {
@@ -20,16 +20,33 @@ function Cart({ food, placeOrder, foodHistory }) {
         <p>Order History</p>
         <ul>
           {foodHistory.map(ele => {
-            return <li>{`Item name : ${ele.item} Price: Rs ${ele.price}`}</li>;
+            return (
+              <li className="breadcrumb-item">{`Item name : ${ele.item} Price: Rs ${ele.price}`}</li>
+            );
           })}
         </ul>
+        {foodHistory.length ? (
+          <p className="lead" onClick={() => clear()}>
+            Clear History
+          </p>
+        ) : (
+          <span>Previous Order : 0</span>
+        )}
       </div>
       <hr />
       <hr />
       <h2>Items in Cart</h2>
       <ul>
         {food.map(ele => (
-          <li>{`Item name : ${ele.item} Price: Rs ${ele.price}`}</li>
+          <p>
+            {`Item name : ${ele.item} Price: Rs ${ele.price}`}
+            <span
+              className="ml-3 badge badge-danger"
+              onClick={() => alert("sure want to delete ?")}
+            >
+              remove
+            </span>
+          </p>
         ))}
       </ul>
 
@@ -44,7 +61,9 @@ function Cart({ food, placeOrder, foodHistory }) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  placeOrder: () => dispatch(placeOrder())
+  placeOrder: () => dispatch(placeOrder()),
+  clear: () => dispatch(clearHistory())
+  // delItem: item => dispatch(delItem(item))
 });
 
 const mapStateToProps = state => ({

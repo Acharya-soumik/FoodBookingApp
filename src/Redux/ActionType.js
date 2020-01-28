@@ -1,6 +1,9 @@
 export const IS_AUTH = "IS_AUTH";
 export const LOGIN = "LOGIN";
 export const SIGN_UP = "SIGN_UP";
+export const LOG_OUT = "LOG_OUT";
 export const ADD_FOOD = "ADD_FOOD";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const PLACE_ORDER = "PLACE_ORDER";
+export const CLEAR_HISTORY = "CLEAR_HISTORY";
+export const DEL_ITEM = "DEL_ITEM";

@@ -8,6 +8,8 @@ import AddNew from "./Pages/AddNew";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import AddToCart from "./Pages/AddToCart";
+import { connect } from "react-redux";
+import { logOut } from "./Redux/Action";
 
 const errorPage = () => {
   return (
@@ -37,7 +39,12 @@ const errorPage = () => {
   );
 };
 
-function Routes() {
+function Routes(props) {
+  const logoutHandler = () => {
+    alert("logged out");
+    props.logout();
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -89,9 +96,17 @@ function Routes() {
               </a>
             </li>
           </ul>
-          <Link to="/login" className="text-ligt">
-            <button className="btn btn-dark">Login/SignUp</button>
-          </Link>
+          {props.checkAuth ? (
+            <button className="btn btn-danger" onClick={logoutHandler}>
+              Log Out
+            </button>
+          ) : (
+            <>
+              <Link to="/login" className="text-ligt">
+                <button className="btn btn-dark">Login/SignUp</button>
+              </Link>
+            </>
+          )}
         </div>
       </nav>
       <Switch>
@@ -112,4 +127,12 @@ function Routes() {
   );
 }
 
-export default Routes;
+const mapStateToProps = state => ({
+  checkAuth: state.auth.isAuth
+});
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logOut())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

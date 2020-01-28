@@ -6,13 +6,13 @@ function Resturant({ food }) {
   let data = food.rest;
   console.log(data);
   return (
-    <section>
+    <section className="text-center">
       <div>
         <h2>Restaurants</h2>
         <div className="col-md-10 row container">
           {data.map(ele => {
             return (
-              <div className="md-col-4">
+              <div className="md-col-4 m-auto">
                 <div className="card">
                   <img
                     src="https://source.unsplash.com/random/300x300"

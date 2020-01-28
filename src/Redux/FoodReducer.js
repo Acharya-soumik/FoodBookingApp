@@ -1,4 +1,10 @@
-import { ADD_FOOD, ADD_TO_CART, PLACE_ORDER } from "../Redux/ActionType";
+import {
+  ADD_FOOD,
+  ADD_TO_CART,
+  PLACE_ORDER,
+  CLEAR_HISTORY,
+  DEL_ITEM
+} from "../Redux/ActionType";
 
 const initialState = {
   rest: [],
@@ -28,6 +34,17 @@ const foodReducer = (state = initialState, action) => {
         orderHistory: [...state.orderHistory, ...state.cart],
         cart: []
       };
+    }
+
+    case CLEAR_HISTORY: {
+      return {
+        ...state,
+        orderHistory: []
+      };
+    }
+
+    case DEL_ITEM: {
+      return state;
     }
 
     default:
